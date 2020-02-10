@@ -1,6 +1,7 @@
 import java.util.HashMap;
 
 
+
 /**
  * This class stores the basic state necessary for the A* algorithm to compute a
  * path across a map.  This state includes a collection of "open waypoints" and
@@ -44,8 +45,15 @@ public class AStarState
      **/
     public Waypoint getMinOpenWaypoint()
     {
-        // TODO:  Implement.
-        return null;
+        if(this.openWP.size()==0) return null;
+        var tmp = this.openWP.values();
+        int minVal = 99999999;
+        Waypoint result = null;
+        for(Waypoint w: tmp)
+        {
+           if(minVal > w.getTotalCost())  result = w;
+        }
+        return result;
     }
 
     /**
@@ -67,8 +75,7 @@ public class AStarState
     /** Returns the current number of open waypoints. **/
     public int numOpenWaypoints()
     {
-        // TODO:  Implement.
-        return 0;
+        return this.openWP.size();
     }
 
 
