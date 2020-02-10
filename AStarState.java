@@ -47,11 +47,15 @@ public class AStarState
     {
         if(this.openWP.size()==0) return null;
         var tmp = this.openWP.values();
-        int minVal = 99999999;
+        double minVal = 1e10;
         Waypoint result = null;
         for(Waypoint w: tmp)
         {
-           if(minVal > w.getTotalCost())  result = w;
+           if(minVal > w.getTotalCost())
+           {
+               minVal = w.getTotalCost();
+               result = w;
+           }
         }
         return result;
     }
