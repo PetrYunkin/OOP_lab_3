@@ -28,8 +28,8 @@ public class AStarState
 
         this.map = map;
 
-        openWP = new HashMap<Location, Waypoint>();
-        closedWP = new HashMap<Location, Waypoint>();
+        openWP = new HashMap<>();
+        closedWP = new HashMap<>();
     }
 
     /** Returns the map that the A* pathfinder is navigating. **/
@@ -102,7 +102,8 @@ public class AStarState
      **/
     public void closeWaypoint(Location loc)
     {
-        // TODO:  Implement.
+        closedWP.put(loc,openWP.get(loc));
+        openWP.remove(loc);
     }
 
     /**
@@ -111,8 +112,7 @@ public class AStarState
      **/
     public boolean isLocationClosed(Location loc)
     {
-        // TODO:  Implement.
-        return false;
+        return closedWP.containsKey(loc);
     }
 }
 
