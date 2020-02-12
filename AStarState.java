@@ -71,8 +71,21 @@ public class AStarState
      **/
     public boolean addOpenWaypoint(Waypoint newWP)
     {
-        // TODO:  Implement.
-        return false;
+        if(!openWP.containsKey(newWP.loc))
+        {
+            openWP.put(newWP.loc,newWP);
+            return true;
+        }
+        else
+        {
+            var wp = openWP.get(newWP.loc);
+            if(wp.getPreviousCost() > newWP.getPreviousCost())
+            {
+                openWP.put(newWP.loc, newWP);
+                return true;
+            }
+            else return false;
+        }
     }
 
 
